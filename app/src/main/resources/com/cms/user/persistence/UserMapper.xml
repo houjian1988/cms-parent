@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cms.user.persistence.UserMapper">
+    <sql id="Base_Column_List">
+       ID AS id,REAL_NAME AS realName,LOGIN_NAME AS loginName, PASSWORD AS password
+    </sql>
+
+    <select id="findByid" resultType="com.cms.dto.user.UserDto" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        CMS_USER
+        where
+        ID=#{id}
+    </select>
+
+    <select id="findByLoginName" resultType="com.cms.dto.user.UserDto" parameterType="com.cms.dto.user.UserDto">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        CMS_USER
+        <where>
+            <if test="loginName!=null and loginName!=''">
+                LOGIN_NAME=#{loginName}
+            </if>
+            <if test="password!=null and password!=''">
+                and PASSWORD=#{password}
+            </if>
+        </where>
+    </select>
+
+</mapper>
