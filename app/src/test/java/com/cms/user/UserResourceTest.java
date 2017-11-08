@@ -3,7 +3,6 @@ package com.cms.user;
 import com.cms.common.DataPrepareUtil;
 import com.cms.common.MockDispatcher;
 import com.cms.common.utils.JAXBUtil;
-import com.cms.dto.common.MapDto;
 import com.cms.dto.user.UserDto;
 import com.cms.user.domain.service.UserService;
 import org.codehaus.jettison.json.JSONObject;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
-import java.util.Map;
 
 public class UserResourceTest extends DataPrepareUtil {
     @Autowired
