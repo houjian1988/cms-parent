@@ -1,8 +1,10 @@
 package com.cms.user;
 
 import com.cms.common.utils.JAXBUtil;
+import com.cms.dto.common.MapDto;
 import com.cms.dto.user.UserDto;
 import com.cms.user.domain.service.UserService;
+import org.codehaus.jettison.json.JSONObject;
 import org.jboss.resteasy.annotations.GZIP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Map;
 
 
 @Path("/user")
@@ -25,13 +28,25 @@ public class UserResource {
     private UserService userService;
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}/{id}")
     @GZIP
     public Response user(@PathParam("id") Integer id) {
         LOG.info("Request[GET] user param id=" + id);
         UserDto user = userService.findByid(id);
         LOG.info("Response user:" + JAXBUtil.convertToXML(user));
         return Response.ok().entity(user).build();
+    }
+
+    @GET
+    @Path("/{id}")
+    @GZIP
+    public Response findUserById(@PathParam("id") Integer id) {
+        LOG.info("Request[GET] user param id=" + id);
+        Map userMap = userService.findUserById(id);
+        JSONObject jsonObj = new JSONObject(userMap);
+//        MapDto mapDto = new MapDto(userMap);
+//        LOG.info("Response user:" + JAXBUtil.convertToXML(mapDto));
+        return Response.ok().entity(jsonObj.toString()).build();
     }
 
     @POST

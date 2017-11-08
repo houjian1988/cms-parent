@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,5 +28,10 @@ public class UserServiceImpl implements UserService {
         String password = DigestUtils.shaHex(loginDto.getPassword());
         loginDto.setPassword(password);
         return userRepository.findByLoginName(loginDto);
+    }
+
+    @Override
+    public Map findUserById(Integer id) {
+        return userRepository.findUserById(id);
     }
 }

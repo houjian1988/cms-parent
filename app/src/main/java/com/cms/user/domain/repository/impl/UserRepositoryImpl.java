@@ -6,6 +6,8 @@ import com.cms.user.persistence.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 @Repository
 public class UserRepositoryImpl implements UserRepository {
     @Autowired
@@ -17,5 +19,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     public UserDto findByLoginName(UserDto loginDto) {
         return userMapper.findByLoginName(loginDto);
+    }
+
+    @Override
+    public Map findUserById(Integer id) {
+        return userMapper.findUserById(id);
     }
 }

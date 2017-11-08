@@ -3,8 +3,10 @@ package com.cms.user;
 import com.cms.common.DataPrepareUtil;
 import com.cms.common.MockDispatcher;
 import com.cms.common.utils.JAXBUtil;
+import com.cms.dto.common.MapDto;
 import com.cms.dto.user.UserDto;
 import com.cms.user.domain.service.UserService;
+import org.codehaus.jettison.json.JSONObject;
 import org.jboss.resteasy.mock.MockHttpRequest;
 import org.jboss.resteasy.mock.MockHttpResponse;
 import org.junit.Assert;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 public class UserResourceTest extends DataPrepareUtil {
     @Autowired
@@ -29,8 +32,9 @@ public class UserResourceTest extends DataPrepareUtil {
         MockHttpResponse response = new MockHttpResponse();
         mockDispatcher.getDispatcher("userResource", UserResource.class).invoke(request, response);
         Assert.assertEquals(HttpServletResponse.SC_OK, response.getStatus());
-        UserDto userDto = JAXBUtil.convertJsonToObject(response.getContentAsString(), UserDto.class);
-        Assert.assertEquals("houjian", userDto.getLoginName());
+        String contentAsString = response.getContentAsString();
+        JSONObject object = JAXBUtil.convertJsonToObject(response.getContentAsString(), JSONObject.class);
+        Assert.assertEquals("houjian", object.toString());
     }
 
     @Test
