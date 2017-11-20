@@ -20,9 +20,4 @@ public class UserRepositoryImpl implements UserRepository {
     public UserDto findByLoginName(UserDto loginDto) {
         return userMapper.findByLoginName(loginDto);
     }
-
-    @Override
-    public Map findUserById(Integer id) {
-        return userMapper.findUserById(id);
-    }
 }

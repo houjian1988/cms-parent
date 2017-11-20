@@ -5,7 +5,6 @@ import com.cms.common.MockDispatcher;
 import com.cms.common.utils.JAXBUtil;
 import com.cms.dto.user.UserDto;
 import com.cms.user.domain.service.UserService;
-import org.codehaus.jettison.json.JSONObject;
 import org.jboss.resteasy.mock.MockHttpRequest;
 import org.jboss.resteasy.mock.MockHttpResponse;
 import org.junit.Assert;
@@ -30,9 +29,8 @@ public class UserResourceTest extends DataPrepareUtil {
         MockHttpResponse response = new MockHttpResponse();
         mockDispatcher.getDispatcher("userResource", UserResource.class).invoke(request, response);
         Assert.assertEquals(HttpServletResponse.SC_OK, response.getStatus());
-        String contentAsString = response.getContentAsString();
-        JSONObject object = JAXBUtil.convertJsonToObject(response.getContentAsString(), JSONObject.class);
-        Assert.assertEquals("houjian", object.toString());
+        UserDto userDto = JAXBUtil.convertJsonToObject(response.getContentAsString(), UserDto.class);
+        Assert.assertEquals("侯健", userDto.getRealName());
     }
 
     @Test

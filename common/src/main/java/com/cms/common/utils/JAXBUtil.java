@@ -20,7 +20,7 @@ public class JAXBUtil {
     }
 
     /**
-     * 默认转对象
+     * 默认JSON转对象
      *
      * @param message 信息
      * @param type    类型
@@ -31,6 +31,14 @@ public class JAXBUtil {
         return convertToObject(message, type, MediaType.APPLICATION_JSON);
     }
 
+    /**
+     * 默认XML转对象
+     *
+     * @param message 信息
+     * @param type    类型
+     * @param <T>     对象类型
+     * @return 返回对象
+     */
     public static <T> T convertXMLToObject(String message, Class<T> type) {
         return convertToObject(message, type, MediaType.APPLICATION_XML);
     }

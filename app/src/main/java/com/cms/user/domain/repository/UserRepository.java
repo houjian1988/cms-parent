@@ -18,10 +18,4 @@ public interface UserRepository {
      * @return User 对象
      */
     UserDto findByLoginName(UserDto loginDto);
-
-    /**
-     * @param id 用户ID
-     * @return 用户信息
-     */
-    Map findUserById(Integer id);
 }

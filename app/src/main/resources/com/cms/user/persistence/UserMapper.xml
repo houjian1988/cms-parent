@@ -14,15 +14,6 @@
         ID=#{id}
     </select>
 
-    <select id="findUserById" resultType="java.util.Map" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from
-        CMS_USER
-        where
-        ID=#{id}
-    </select>
-
     <select id="findByLoginName" resultType="com.cms.dto.user.UserDto" parameterType="com.cms.dto.user.UserDto">
         select
         <include refid="Base_Column_List"/>

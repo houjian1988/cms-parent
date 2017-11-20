@@ -15,7 +15,7 @@
         </param-value>
     </context-param>
 
-    <!--设定web应用的过滤器,用于监控的Servlet Filter-->
+    <!--设定web应用的过滤器,用于监控的servlet filter-->
     <filter>
         <filter-name>monitoring</filter-name>
         <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
@@ -25,7 +25,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--监听HTTP Session-->
+    <!--监听http session-->
     <listener>
         <listener-class>net.bull.javamelody.SessionListener</listener-class>
     </listener>
