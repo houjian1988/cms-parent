@@ -12,8 +12,9 @@ Ext.define('cmsapp.view.login.Login', {
         'Ext.button.Button'
     ],
 
-    title: 'Let\'s Log In',
-    defaultFocus: 'authdialog', //默认页面焦点位置
+    title: '华润河南医药有限公司',
+    //默认页面焦点位置
+    defaultFocus: 'authdialog',
 
     items: [
         {
@@ -34,7 +35,7 @@ Ext.define('cmsapp.view.login.Login', {
             items: [
                 {
                     xtype: 'label',
-                    text: '登录你的帐号'
+                    text: '登录帐号'
                 },
                 {
                     xtype: 'textfield',
@@ -44,7 +45,7 @@ Ext.define('cmsapp.view.login.Login', {
                     height: 55,
                     hideLabel: true,
                     allowBlank: false,
-                    emptyText: 'user id',
+                    emptyText: '用户帐号',
                     triggers: {
                         glyphed: {
                             cls: 'trigger-glyph-noop auth-email-trigger'
@@ -56,7 +57,7 @@ Ext.define('cmsapp.view.login.Login', {
                     cls: 'auth-textbox',
                     height: 55,
                     hideLabel: true,
-                    emptyText: 'Password',
+                    emptyText: '密码',
                     inputType: 'password',
                     name: 'password',
                     bind: '{password}',
@@ -77,11 +78,11 @@ Ext.define('cmsapp.view.login.Login', {
                             cls: 'form-panel-font-color rememberMeCheckbox',
                             height: 30,
                             bind: '{persist}',
-                            boxLabel: 'Remember me'
+                            boxLabel: '保持登录'
                         },
                         {
                             xtype: 'box',
-                            html: '<a href="#passwordreset" class="link-forgot-password"> Forgot Password ?</a>'
+                            html: '<a href="#passwordreset" class="link-forgot-password">忘记密码</a>'
                         }
                     ]
                 },
