@@ -27,8 +27,12 @@
 
     <!--MapperScannerConfigurer配置-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.cms.user.persistence,
-                                            com.cms.permission.persistence"/>
+        <property name="basePackage">
+            <value>
+                com.cms.user.persistence,
+                com.cms.permission.persistence
+            </value>
+        </property>
     </bean>
 
 </beans>
